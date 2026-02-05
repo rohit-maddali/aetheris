@@ -1,0 +1,637 @@
+.artist-bio {
+    position: relative;
+    padding: 120px 20px;
+    background: linear-gradient(180deg,
+            var(--bg-deep) 0%,
+            rgba(10, 5, 25, 0.95) 50%,
+            var(--bg-deep) 100%);
+    overflow: hidden;
+}
+
+.artist-bio::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background:
+        radial-gradient(circle at 20% 30%, rgba(138, 43, 226, 0.08) 0%, transparent 50%),
+        radial-gradient(circle at 80% 70%, rgba(75, 0, 130, 0.08) 0%, transparent 50%);
+    pointer-events: none;
+}
+
+.artist-bio__container {
+    max-width: 1400px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+}
+
+/* Header */
+.artist-bio__header {
+    text-align: center;
+    margin-bottom: 80px;
+}
+
+.artist-bio__title {
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    margin-bottom: 20px;
+    line-height: 1.1;
+}
+
+.gradient-text {
+    background: linear-gradient(135deg, #a78bfa 0%, #ec4899 50%, #8b5cf6 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.artist-bio__subtitle {
+    font-size: clamp(1.5rem, 3vw, 2.5rem);
+    font-weight: 300;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.6);
+    margin-top: 10px;
+}
+
+/* Centered Content Layout */
+.artist-bio__content-centered {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+/* Grid Layout (legacy - keeping for backward compatibility) */
+.artist-bio__grid {
+    display: grid;
+    grid-template-columns: 1fr 400px;
+    gap: 60px;
+    align-items: start;
+}
+
+@media (max-width: 1024px) {
+    .artist-bio__grid {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+}
+
+/* Bio Cards */
+.bio-card {
+    background: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 24px;
+    padding: 40px;
+    margin-bottom: 30px;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.bio-card:hover {
+    background: rgba(255, 255, 255, 0.05);
+    border-color: rgba(167, 139, 250, 0.3);
+    transform: translateY(-4px);
+    box-shadow:
+        0 20px 60px rgba(138, 43, 226, 0.15),
+        0 0 0 1px rgba(167, 139, 250, 0.1);
+}
+
+.bio-card__title {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 24px;
+    color: var(--accent);
+    letter-spacing: 0.02em;
+}
+
+.bio-card__text {
+    font-size: 1.05rem;
+    line-height: 1.8;
+    color: rgba(255, 255, 255, 0.75);
+    margin-bottom: 20px;
+}
+
+.bio-card__text:last-child {
+    margin-bottom: 0;
+}
+
+.bio-card__text strong {
+    color: rgba(255, 255, 255, 0.95);
+    font-weight: 600;
+}
+
+.bio-card__text em {
+    color: var(--accent);
+    font-style: normal;
+    font-weight: 500;
+}
+
+/* Philosophy-focused Bio Card */
+.bio-card--philosophy {
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    padding: 50px;
+    margin-bottom: 50px;
+}
+
+.bio-card--philosophy:hover {
+    background: rgba(255, 255, 255, 0.03);
+    border-color: rgba(167, 139, 250, 0.2);
+}
+
+.bio-card__text--large {
+    font-size: 1.35rem;
+    line-height: 1.9;
+    color: rgba(255, 255, 255, 0.9);
+    font-weight: 300;
+    margin-bottom: 32px;
+    letter-spacing: 0.01em;
+}
+
+.bio-card__text--closing {
+    margin-top: 32px;
+    padding-top: 32px;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    font-style: italic;
+    color: rgba(255, 255, 255, 0.85);
+}
+
+/* Streaming Section */
+.streaming-section {
+    margin-top: 60px;
+    text-align: center;
+}
+
+.streaming-section__title {
+    font-size: 1rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.5);
+    margin-bottom: 24px;
+}
+
+.streaming-links--centered {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    max-width: 400px;
+    margin: 0 auto;
+    border-top: none;
+    padding-top: 0;
+}
+
+
+/* Discography Grid */
+.bio-card--discography {
+    background: linear-gradient(135deg,
+            rgba(138, 43, 226, 0.08) 0%,
+            rgba(75, 0, 130, 0.08) 100%);
+}
+
+.discography-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+}
+
+.album-item {
+    background: rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    padding: 20px;
+    transition: all 0.3s ease;
+}
+
+.album-item:hover {
+    background: rgba(0, 0, 0, 0.5);
+    border-color: var(--accent);
+    transform: translateY(-2px);
+}
+
+.album-item__year {
+    font-size: 0.75rem;
+    color: var(--accent);
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+}
+
+.album-item__name {
+    font-size: 1rem;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.95);
+    margin-bottom: 6px;
+}
+
+.album-item__type {
+    font-size: 0.85rem;
+    color: rgba(255, 255, 255, 0.5);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+/* Sidebar */
+.artist-bio__sidebar {
+    position: sticky;
+    top: 100px;
+}
+
+/* Profile Card */
+.profile-card {
+    background: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 24px;
+    padding: 40px;
+    text-align: center;
+    margin-bottom: 30px;
+    transition: all 0.4s ease;
+}
+
+.profile-card:hover {
+    background: rgba(255, 255, 255, 0.05);
+    border-color: rgba(167, 139, 250, 0.3);
+    box-shadow: 0 20px 60px rgba(138, 43, 226, 0.2);
+}
+
+.profile-card__image {
+    margin-bottom: 24px;
+}
+
+.profile-avatar {
+    width: 120px;
+    height: 120px;
+    margin: 0 auto;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #8b5cf6 0%, #ec4899 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow:
+        0 0 0 4px rgba(139, 92, 246, 0.2),
+        0 20px 40px rgba(139, 92, 246, 0.3);
+    transition: all 0.4s ease;
+}
+
+.profile-card:hover .profile-avatar {
+    transform: scale(1.05);
+    box-shadow:
+        0 0 0 6px rgba(139, 92, 246, 0.3),
+        0 30px 60px rgba(139, 92, 246, 0.4);
+}
+
+.profile-avatar__initials {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: white;
+    letter-spacing: 0.05em;
+}
+
+.profile-card__name {
+    font-size: 1.75rem;
+    font-weight: 700;
+    margin-bottom: 8px;
+    color: rgba(255, 255, 255, 0.95);
+}
+
+.profile-card__role {
+    font-size: 0.95rem;
+    color: rgba(255, 255, 255, 0.6);
+    margin-bottom: 32px;
+    letter-spacing: 0.05em;
+}
+
+/* Streaming Links */
+.streaming-links {
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding-top: 24px;
+}
+
+.streaming-links__title {
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.5);
+    margin-bottom: 16px;
+}
+
+.streaming-link {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 14px 20px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    margin-bottom: 10px;
+    text-decoration: none;
+    color: rgba(255, 255, 255, 0.8);
+    font-weight: 500;
+    transition: all 0.3s ease;
+    width: 100%;
+    justify-content: center;
+}
+
+
+.streaming-link:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: var(--accent);
+    color: white;
+    transform: translateX(4px);
+}
+
+.streaming-link__icon {
+    width: 20px;
+    height: 20px;
+    flex-shrink: 0;
+}
+
+/* Stats Card */
+.stats-card {
+    background: linear-gradient(135deg,
+            rgba(138, 43, 226, 0.1) 0%,
+            rgba(75, 0, 130, 0.1) 100%);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 24px;
+    padding: 32px;
+    margin-bottom: 30px;
+}
+
+.stats-card__title {
+    font-size: 1rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.5);
+    margin-bottom: 24px;
+    text-align: center;
+}
+
+.stat-item {
+    text-align: center;
+    padding: 20px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.stat-item:last-child {
+    border-bottom: none;
+}
+
+.stat-item__value {
+    font-size: 2.5rem;
+    font-weight: 700;
+    background: linear-gradient(135deg, #a78bfa 0%, #ec4899 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 8px;
+}
+
+.stat-item__label {
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.6);
+    letter-spacing: 0.05em;
+}
+
+/* Philosophy Card */
+.philosophy-card {
+    background: rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 24px;
+    padding: 32px;
+}
+
+.philosophy-card__title {
+    font-size: 1rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.5);
+    margin-bottom: 20px;
+}
+
+.philosophy-card__quote {
+    font-size: 1.05rem;
+    line-height: 1.7;
+    color: rgba(255, 255, 255, 0.8);
+    font-style: italic;
+    margin: 0 0 16px 0;
+    padding-left: 20px;
+    border-left: 3px solid var(--accent);
+}
+
+.philosophy-card__author {
+    font-size: 0.9rem;
+    color: var(--accent);
+    font-weight: 600;
+    text-align: right;
+}
+
+/* Animations */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.bio-card,
+.profile-card,
+.stats-card,
+.philosophy-card {
+    animation: fadeInUp 0.8s ease-out backwards;
+}
+
+.bio-card:nth-child(1) {
+    animation-delay: 0.1s;
+}
+
+.bio-card:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+.profile-card {
+    animation-delay: 0.15s;
+}
+
+.stats-card {
+    animation-delay: 0.25s;
+}
+
+.philosophy-card {
+    animation-delay: 0.35s;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+    .artist-bio__grid {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+
+    .artist-bio__sidebar {
+        position: relative;
+        top: 0;
+    }
+}
+
+@media (max-width: 768px) {
+    .artist-bio {
+        padding: 60px 16px;
+    }
+
+    .artist-bio__header {
+        margin-bottom: 40px;
+    }
+
+    .artist-bio__title {
+        font-size: clamp(2rem, 8vw, 3rem);
+    }
+
+    .artist-bio__subtitle {
+        font-size: clamp(1.25rem, 5vw, 2rem);
+    }
+
+    .bio-card,
+    .profile-card,
+    .stats-card,
+    .philosophy-card {
+        padding: 24px;
+        border-radius: 20px;
+    }
+
+    .bio-card__title {
+        font-size: 1.25rem;
+    }
+
+    .bio-card__text {
+        font-size: 1rem;
+    }
+
+    .discography-grid {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+
+    .album-item {
+        padding: 16px;
+    }
+
+    .profile-avatar {
+        width: 100px;
+        height: 100px;
+    }
+
+    .profile-avatar__initials {
+        font-size: 2rem;
+    }
+
+    .profile-card__name {
+        font-size: 1.5rem;
+    }
+
+    .streaming-link {
+        padding: 12px 16px;
+        font-size: 0.9rem;
+    }
+
+    .streaming-link__icon {
+        width: 18px;
+        height: 18px;
+    }
+
+    .stat-item__value {
+        font-size: 2rem;
+    }
+
+    .philosophy-card__quote {
+        font-size: 1rem;
+        padding-left: 16px;
+    }
+}
+
+@media (max-width: 480px) {
+    .artist-bio {
+        padding: 40px 12px;
+    }
+
+    .artist-bio__header {
+        margin-bottom: 30px;
+    }
+
+    .bio-card,
+    .profile-card,
+    .stats-card,
+    .philosophy-card {
+        padding: 20px;
+        margin-bottom: 20px;
+    }
+
+    .discography-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .album-item {
+        padding: 14px;
+    }
+
+    .streaming-links {
+        padding-top: 20px;
+    }
+
+    .streaming-link {
+        padding: 10px 14px;
+        font-size: 0.85rem;
+    }
+}
+
+/* Tablet landscape */
+@media (min-width: 769px) and (max-width: 1024px) {
+    .artist-bio__grid {
+        grid-template-columns: 1fr;
+        max-width: 800px;
+        margin: 0 auto;
+    }
+
+    .discography-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* Touch device optimizations */
+@media (hover: none) and (pointer: coarse) {
+
+    .bio-card,
+    .profile-card,
+    .stats-card,
+    .philosophy-card {
+        transition: none;
+    }
+
+    .bio-card:hover {
+        transform: none;
+    }
+
+    .streaming-link {
+        min-height: 48px;
+        padding: 14px 20px;
+    }
+
+    .profile-card:hover .profile-avatar {
+        transform: none;
+    }
+}
